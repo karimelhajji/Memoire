@@ -14,7 +14,7 @@ Chargement automatique des données depuis GitHub et analyse intelligente IA pou
 """)
 
 # === CONFIGURE ICI TON REPO et chemins CSV ===
-GITHUB_RAW_BASE = "https://github.com/karimelhajji/Memoire"  # <--- MODIFIE ICI
+GITHUB_RAW_BASE = "https://github.com/karimelhajji/Memoire.git"  # <--- MODIFIE ICI
 
 CSV_PUBLIC = "simulated_public_financing_.csv"
 CSV_PRIVATE = "simulated_private_financing_.csv"
