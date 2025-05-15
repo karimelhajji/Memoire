@@ -9,16 +9,15 @@ st.title("🤖 Copilote IA pour arbitrage de financement vert")
 st.markdown("""
 Utilisez ce copilote pour **générer des recommandations budgétaires et fiscales** selon les besoins de financement vert (BFV), la dette publique et d'autres paramètres économiques.
 
-🔐 Ce copilote utilise l'API officielle [OpenAI ChatGPT](https://platform.openai.com/docs/api-reference/chat) avec des modèles comme GPT-4 ou GPT-3.5.  
-⚠️ Vous devez entrer votre propre clé API OpenAI pour l'utiliser.
+🔐 Ce copilote utilise l'API [OpenRouter.ai](https://openrouter.ai) avec un modèle gratuit.  
+⚠️ Vous devez entrer votre propre clé API OpenRouter pour l'utiliser.
 """)
 
 # === API Key Input ===
-api_key = st.text_input("🔑 Clé API OpenAI", type="password")
-model = st.selectbox("🧠 Modèle IA à utiliser", [
-    "gpt-3.5-turbo",
-    "gpt-4"
-])
+api_key = st.text_input("🔑 Clé API OpenRouter.ai", type="password")
+
+# Modèle gratuit
+model = "mistralai/mistral-7b-instruct:free"
 
 st.divider()
 
@@ -34,7 +33,7 @@ st.divider()
 
 if st.button("🤖 Générer une stratégie avec IA"):
     if not api_key:
-        st.warning("Merci d'ajouter votre clé API OpenAI pour utiliser le copilote.")
+        st.warning("Merci d'ajouter votre clé API OpenRouter pour utiliser le copilote.")
     else:
         with st.spinner("L'IA réfléchit à une stratégie budgétaire durable..."):
             prompt = f"""
@@ -61,7 +60,7 @@ Présente la réponse sous forme claire, pédagogique et hiérarchisée.
                 "Content-Type": "application/json",
             }
 
-            url = "https://api.openai.com/v1/chat/completions"
+            url = "https://openrouter.ai/api/v1/chat/completions"
             data = {
                 "model": model,
                 "messages": [
@@ -81,4 +80,4 @@ Présente la réponse sous forme claire, pédagogique et hiérarchisée.
 
 st.divider()
 
-st.info("💡 Conseil : créez un compte gratuit sur https://platform.openai.com pour générer une clé API.")
+st.info("💡 Conseil : créez un compte gratuit sur https://openrouter.ai pour générer une clé API.")
