@@ -22,7 +22,7 @@ CSV_PRIVATE = "simulated_private_financing_.csv"
 @st.cache_data(ttl=600)
 def load_data(url):
     try:
-        df = pd.read_csv(url)
+        df = pd.read_csv(url, encoding="latin1")  # forcer encodage latin1
         return df
     except Exception as e:
         st.error(f"Erreur chargement fichier : {e}")
