@@ -42,8 +42,8 @@ if df_pub is not None and df_priv is not None:
     st.dataframe(df_priv.head())
 
     # Calcul BFV
-    df_bfv_pub = df_pub.groupby("Année")["Montant (€)"].sum().reset_index(name="BFV_Public")
-    df_bfv_priv = df_priv.groupby("Année")["Montant (€)"].sum().reset_index(name="BFV_Privé")
+    df_bfv_pub = df_pub.groupby("Année")["Subventions_vertes_Mds_euros"].sum().reset_index(name="BFV_Public")
+    df_bfv_priv = df_priv.groupby("Année")["Investissements_Privés"].sum().reset_index(name="BFV_Privé")
 
     df_bfv = pd.merge(df_bfv_pub, df_bfv_priv, on="Année", how="outer").fillna(0)
     df_bfv["BFV_Total"] = df_bfv["BFV_Public"] + df_bfv["BFV_Privé"]
